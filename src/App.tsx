@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Cake from "./components/Cake";
+import CakeBuilder from "./components/CakeBuilder";
+import Layer from "./models/Layer";
 
 function App() {
+  //THE STATE
+  const [layers, setTheLayers] = useState<Layer[]>([
+    { height: 2, width: 1, color: "green" },
+    { height: 3, width: 3, color: "pink" },
+    { height: 5, width: 5, color: "blue" },
+  ]);
+  //FUNCTION
+  const addNewLayer = (newLayer: Layer): void => {
+    setTheLayers((prev) => {
+      const copyOfCakeArray: Layer[] = prev.splice(0);
+      copyOfCakeArray.push(newLayer);
+      return copyOfCakeArray;
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App">
+      <CakeBuilder addLayer={addNewLayer} />
+      <Cake arrayOfLayers={layers} />
+    </main>
   );
 }
 
