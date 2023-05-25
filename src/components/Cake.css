@@ -1,0 +1,12 @@
+.Cake {
+  background-color: aquamarine;
+
+  width: 100%;
+}
+
+.Cake .theLayers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
