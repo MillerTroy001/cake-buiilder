@@ -6,14 +6,22 @@ import LayerForm from "./LayerForm";
 
 interface Props {
   addLayer: (newLayer: Layer) => void;
+  arrayOfLayers: Layer[];
+  deleteLayer: (index: number) => void;
 }
 
-const CakeBuilder = ({ addLayer }: Props) => {
+const CakeBuilder = ({ addLayer, arrayOfLayers, deleteLayer }: Props) => {
   return (
     <div className="CakeBuilder">
-      <LayerForm addALayer={addLayer} />
-      <LayerAdd />
-      <LayerBuilder />
+      <LayerAdd addLayer={addLayer} />
+      {arrayOfLayers.map((Obj, index) => (
+        <LayerBuilder
+          key={Obj.id}
+          oneLayer={Obj}
+          index={index}
+          deleteLayer={deleteLayer}
+        />
+      ))}
     </div>
   );
 };
