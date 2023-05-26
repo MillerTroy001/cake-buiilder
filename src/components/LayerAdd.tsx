@@ -1,9 +1,22 @@
+import { useState } from "react";
+import Layer from "../models/Layer";
 import "./LayerAdd.css";
-
-const LayerAdd = () => {
+import LayerForm from "./LayerForm";
+interface Props {
+  addLayer: (newLayer: Layer) => void;
+}
+const LayerAdd = ({ addLayer }: Props) => {
+  const [showForm, setShowForm] = useState(false);
+  const setForm = (): void => {
+    setShowForm(false);
+  };
   return (
     <section className="LayerAdd">
-      <button>Add a Layer</button>
+      {showForm ? (
+        <LayerForm addALayer={addLayer} setForm={setForm} />
+      ) : (
+        <button onClick={() => setShowForm(true)}>Add a Layer</button>
+      )}
     </section>
   );
 };
