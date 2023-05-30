@@ -3,9 +3,10 @@ import Layer from "../models/Layer";
 import "./LayerAdd.css";
 import LayerForm from "./LayerForm";
 interface Props {
-  addLayer: (newLayer: Layer) => void;
+  addLayer: (newLayer: Layer, index: number) => void;
+  index: number;
 }
-const LayerAdd = ({ addLayer }: Props) => {
+const LayerAdd = ({ addLayer, index }: Props) => {
   const [showForm, setShowForm] = useState(false);
   const setForm = (): void => {
     setShowForm(false);
@@ -13,7 +14,7 @@ const LayerAdd = ({ addLayer }: Props) => {
   return (
     <section className="LayerAdd">
       {showForm ? (
-        <LayerForm addALayer={addLayer} setForm={setForm} />
+        <LayerForm addALayer={addLayer} setForm={setForm} index={index} />
       ) : (
         <button onClick={() => setShowForm(true)}>Add a Layer</button>
       )}

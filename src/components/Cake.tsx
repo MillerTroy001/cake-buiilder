@@ -14,6 +14,7 @@ const Cake = ({ arrayOfLayers }: Props) => {
           <CakeLayer key={obj.width} singleLayer={obj} />
         ))}
       </div>
+      <div className="silverPlatter"></div>
     </div>
   );
 };

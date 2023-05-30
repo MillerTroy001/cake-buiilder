@@ -3,33 +3,35 @@ import "./LayerForm.css";
 import Layer from "../models/Layer";
 
 interface Props {
-  addALayer: (newLayer: Layer) => void;
+  addALayer: (newLayer: Layer, index: number) => void;
   setForm: () => void;
+  index: number;
 }
 
-const LayerForm = ({ addALayer, setForm }: Props) => {
+const LayerForm = ({ addALayer, setForm, index }: Props) => {
   const [colorInput, setColorInput] = useState("pink");
-  const [widthInput, setWidthInput] = useState(5);
-  const [heightInput, setHeightInput] = useState(5);
+  const [widthInput, setWidthInput] = useState("5");
+  const [heightInput, setHeightInput] = useState("5");
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
     console.log(e.target);
     const newLayer: Layer = {
       color: colorInput,
-      width: widthInput,
-      height: heightInput,
+      width: +widthInput,
+      height: +heightInput,
       id: Math.random() * 100,
     };
     console.log(newLayer);
-    addALayer(newLayer);
+    addALayer(newLayer, index);
     setColorInput("");
-    setWidthInput(0);
-    setHeightInput(0);
+    setWidthInput("");
+    setHeightInput("");
     setForm();
   };
   return (
     <form className="LayerForm" onSubmit={submitHandler}>
+      <h2>Add a Flavor</h2>
       <label htmlFor="color">Flavor</label>
       <select
         id="color"
@@ -43,29 +45,30 @@ const LayerForm = ({ addALayer, setForm }: Props) => {
         <option value="red">Red Velvet</option>
         <option value="green">Mint</option>
       </select>
-      <label htmlFor="width">Width</label>
+      <label htmlFor="width">Width {widthInput}</label>
       <input
         type="range"
         min="1"
         max="10"
         defaultValue={widthInput}
-        onChange={(e) => setWidthInput + e.target.value}
+        onChange={(e) => setWidthInput(e.target.value)}
         className="slider"
         id="width"
       />
-      <label htmlFor="height">Height</label>
+      <label htmlFor="height">Height {heightInput}</label>
       <input
         type="range"
-        min="1"
+        min="0.5"
         max="10"
         defaultValue={heightInput}
-        onChange={(e) => setHeightInput + e.target.value}
+        onChange={(e) => setHeightInput(e.target.value)}
         className="slider"
         id="height"
       />
-
-      <button> Save</button>
-      <button onClick={setForm}>Cancel</button>
+      <div className="formButtonBox">
+        <button> Save</button>
+        <button onClick={setForm}>Cancel</button>
+      </div>
     </form>
   );
 };
