@@ -1,0 +1,13 @@
+.LayerForm {
+  display: flex;
+  flex-direction: column;
+  background-color: silver;
+  padding: 5px;
+}
+.LayerForm .formButtonBox {
+  display: flex;
+  align-items: row;
+}
+.LayerForm #color {
+  margin-bottom: 10px;
+}

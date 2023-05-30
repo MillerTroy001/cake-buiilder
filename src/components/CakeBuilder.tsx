@@ -5,7 +5,7 @@ import LayerBuilder from "./LayerBuilder";
 import LayerForm from "./LayerForm";
 
 interface Props {
-  addLayer: (newLayer: Layer) => void;
+  addLayer: (newLayer: Layer, index: number) => void;
   arrayOfLayers: Layer[];
   deleteLayer: (index: number) => void;
 }
@@ -13,15 +13,16 @@ interface Props {
 const CakeBuilder = ({ addLayer, arrayOfLayers, deleteLayer }: Props) => {
   return (
     <div className="CakeBuilder">
-      <LayerAdd addLayer={addLayer} />
       {arrayOfLayers.map((Obj, index) => (
         <LayerBuilder
           key={Obj.id}
           oneLayer={Obj}
           index={index}
           deleteLayer={deleteLayer}
+          addLayer={addLayer}
         />
       ))}
+      <LayerAdd addLayer={addLayer} index={0} />
     </div>
   );
 };
