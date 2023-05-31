@@ -22,7 +22,7 @@ const CakeBuilder = ({ addLayer, arrayOfLayers, deleteLayer }: Props) => {
           addLayer={addLayer}
         />
       ))}
-      <LayerAdd addLayer={addLayer} index={0} />
+      <LayerAdd addLayer={addLayer} index={-1} />
     </div>
   );
 };

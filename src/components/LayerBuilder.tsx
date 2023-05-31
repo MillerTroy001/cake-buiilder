@@ -25,7 +25,7 @@ const LayerBuilder = ({ oneLayer, index, deleteLayer, addLayer }: Props) => {
           <div className="boxOutline">
             <div
               className="heightBox"
-              style={{ width: oneLayer.width * 10 + "%" }}
+              style={{ width: oneLayer.height * 10 + "%" }}
             ></div>
           </div>
         </div>
