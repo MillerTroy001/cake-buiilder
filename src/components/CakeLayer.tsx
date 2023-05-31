@@ -12,8 +12,8 @@ const CakeLayer = ({ singleLayer }: Props) => {
       <div
         className="SingleCakeLayer"
         style={{
-          height: singleLayer.height * 20,
-          width: singleLayer.width * 20,
+          height: singleLayer.height * 40,
+          width: singleLayer.width * 40,
           backgroundColor: singleLayer.color,
         }}
       ></div>

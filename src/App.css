@@ -4,7 +4,23 @@ main {
 h1 {
   display: flex;
   justify-content: center;
+  margin: 0px;
+  align-items: center;
 }
+
+body {
+  margin-top: 0px;
+}
+
+header {
+  background-image: url("/src/images/cake.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 768px) {
   main {
     flex-direction: column-reverse;

@@ -9,21 +9,30 @@ function App() {
   const [layers, setTheLayers] = useState<Layer[]>([]);
   //FUNCTION
   console.log(layers);
+
   const addNewLayer = (newLayer: Layer, index: number): void => {
-    setTheLayers((prev) => [
-      //   ...prev.slice(0, index),
-      ...prev,
-      newLayer,
-      // ...prev.slice(index + 1),
-    ]);
+    setTheLayers((prev) => {
+      if (index === -1) {
+        return [...prev, newLayer];
+      } else {
+        return [
+          ...prev.slice(0, index + 1),
+          newLayer,
+          ...prev.slice(index + 1),
+        ];
+      }
+    });
   };
+
   const deleteLayer = (index: number): void => {
     setTheLayers((prev) => [...prev.slice(0, index), ...prev.slice(index + 1)]);
   };
 
   return (
     <>
-      <h1>Welcome to Fancy Cakes</h1>
+      <header>
+        <h1>Welcome to Fancy Cakes</h1>
+      </header>
       <main className="App">
         <CakeBuilder
           addLayer={addNewLayer}

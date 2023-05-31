@@ -16,7 +16,7 @@ const LayerAdd = ({ addLayer, index }: Props) => {
       {showForm ? (
         <LayerForm addALayer={addLayer} setForm={setForm} index={index} />
       ) : (
-        <button onClick={() => setShowForm(true)}>Add a Layer</button>
+        <button onClick={() => setShowForm(true)}>Add Layer Above</button>
       )}
     </section>
   );

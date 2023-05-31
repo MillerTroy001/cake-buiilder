@@ -42,14 +42,19 @@ const LayerForm = ({ addALayer, setForm, index }: Props) => {
         <option value="pink">Strawberry</option>
         <option value="yellow">Banana</option>
         <option value="blue">Superman</option>
-        <option value="red">Red Velvet</option>
-        <option value="green">Mint</option>
+        <option value="#800000">Red Velvet</option>
+        <option value="#A2E4B8">Mint</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="#ED9121">Carrot</option>
+        <option value="#FAFA33">Lemon</option>
+        <option value="black">Divorce Special - Black Licorice</option>
       </select>
       <label htmlFor="width">Width {widthInput}</label>
       <input
         type="range"
         min="1"
         max="10"
+        step=".5"
         defaultValue={widthInput}
         onChange={(e) => setWidthInput(e.target.value)}
         className="slider"
@@ -60,6 +65,7 @@ const LayerForm = ({ addALayer, setForm, index }: Props) => {
         type="range"
         min="0.5"
         max="10"
+        step=".5"
         defaultValue={heightInput}
         onChange={(e) => setHeightInput(e.target.value)}
         className="slider"
